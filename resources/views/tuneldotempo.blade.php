@@ -151,17 +151,37 @@
             // Obtem o elemento de entrada de data no modal
             var dataInputModal = document.getElementById('dataModal');
 
-            // Obtem a data atual
-            var dataAtual = new Date();
-
             // Calcula e exibe a mensagem de dias permitidos
-            var ultimoDia6 = new Date();
-            ultimoDia6.setDate(6);
+            var dataAtual = new Date();
+            var primeiroDiaMes = new Date(dataAtual.getFullYear(), dataAtual.getMonth(), 1);
+            var ultimoDiaMes = new Date(dataAtual.getFullYear(), dataAtual.getMonth() + 1, 0);
 
-            var diasPermitidos = Math.ceil((dataAtual - ultimoDia6) / (1000 * 60 * 60 * 24));
+            var diasPermitidos;
+
+            if (dataAtual.getDate() >= 1 && dataAtual.getDate() <= 4) {
+
+                // SE data_atual estiver do dia 1 ao 4 do mês, ENTAO pode abrir o túnel do mês passado inteiro
+
+                var primeiroDiaMesPassado = new Date(dataAtual.getFullYear(), dataAtual.getMonth() - 1, 1);
+
+                diasPermitidos = Math.ceil((dataAtual - primeiroDiaMesPassado) / (1000 * 60 * 60 * 24));
+                
+            } else if (dataAtual.getDate() >= 5 && dataAtual.getDate() <= ultimoDiaMes.getDate()) {
+
+                // SE data_atual for maior ou igual a 5 e menor ou igual ao último dia do mês,
+
+                // ENTAO pode abrir o túnel do mês atual inteiro
+
+                diasPermitidos = Math.ceil((dataAtual - primeiroDiaMes) / (1000 * 60 * 60 * 24));
+
+            } else {
+
+                // Caso contrário, não há dias permitidos
+                diasPermitidos = 0;
+            }
 
             // Exibe a mensagem informativa no modal
-            alert('Você pode liberar até ' + diasPermitidos + ' dias atrás.');
+            alert('Você pode liberar até ' + diasPermitidos + ' dia(s) atrás.');
 
             // Define a data atual no campo de entrada de data no modal
             dataInputModal.value = dataAtual.toISOString().slice(0, 10);
