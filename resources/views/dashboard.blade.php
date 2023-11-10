@@ -17,7 +17,7 @@
 
     <!-- Barra lateral -->
     <div class="sidebar">
-        <div class="title">CSLR|WGA</div>
+        <div class="title">CSLR|WGA 2222</div>
         <a href="{{ route('dashboard') }}">Dashboard</a>
         <a href="#" id="adminLink">Administrador</a>
         <a href="{{ route('tuneldotempo') }}" id="timeTunnel">Tunel do Tempo</a>
