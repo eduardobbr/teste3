@@ -93,7 +93,7 @@
             </div>
             <div class="btns">
                 <button class="close-btn" onclick="closeModal()">&times;</button> <!-- Botão "x" para fechar -->
-                <button class="btnOK" onclick="closeModal()">ALTERAR</button>
+                <button class="btnOK" type="submit">Alterar</button>
             </div>
         </div>
     </div>

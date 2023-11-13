@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\situacaoController;
 use Illuminate\Support\Facades\Route;
 
 /*
