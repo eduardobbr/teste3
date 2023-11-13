@@ -81,18 +81,18 @@
             <h2>Conseiller - Túnel do Tempo</h2>
             <div class="form-container">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" placeholder="Digite seu nome">
-    
-                <label for="data">Data:</label>
-                <input type="date" id="data" placeholder="Selecione a data">
-    
+                <input type="text" id="nome" placeholder="Informe seu nome">
+
+                <input type="text" id="dataModal" readonly>
+
                 <label for="dias">Dias desejados:</label>
-                <input type="number" id="dias" placeholder="Digite a quantidade de dias">
-    
+                <input type="number" id="dias" placeholder="Informe a quantidade de dias">
+
                 <label for="motivo">Motivo:</label>
-                <textarea id="motivo" placeholder="Digite o motivo"></textarea>
+                <textarea id="motivo" placeholder="Informe o motivo"></textarea>
             </div>
             <div class="btns">
+                <button class="close-btn" onclick="closeModal()">&times;</button> <!-- Botão "x" para fechar -->
                 <button class="btnOK" onclick="closeModal()">ALTERAR</button>
             </div>
         </div>
@@ -100,9 +100,7 @@
 
     <div class="overlay"></div>
 
-    <!-- Outro conteúdo, se houver -->
 
-    {{-- conteudo principal --}}
     <script>
         // Adicione um evento de clique ao link "Administrador"
         document.getElementById("adminLink").addEventListener("click", function() {
@@ -117,17 +115,39 @@
             }
         });
 
-        const modal = document.querySelector('.modal-container')
-
+     
         function openModal() {
-            modal.classList.add('active')
-            document.querySelector('.overlay').classList.add('active');
-        }
+        const modal = document.querySelector('.modal-container');
+        modal.classList.add('active');
+        document.querySelector('.overlay').classList.add('active');
 
-        function closeModal() {
-            modal.classList.remove('active')
-            document.querySelector('.overlay').classList.remove('active');
-        }
+        // Obtenha o elemento de entrada de data no modal
+        var dataInputModal = document.getElementById('dataModal');
+
+        // Obtenha a data atual
+        var dataAtual = new Date();
+
+        // Formate a data no formato "DD/MM/AAAA"
+        var formattedDate =
+            ("0" + dataAtual.getDate()).slice(-2) + "/" +
+            ("0" + (dataAtual.getMonth() + 1)).slice(-2) + "/" +
+            dataAtual.getFullYear();
+
+        // Defina a data atual no campo de entrada de data no modal
+        dataInputModal.value = formattedDate;
+
+        // Defina o campo de entrada de data como somente leitura
+        dataInputModal.setAttribute('readonly', 'true');
+    }
+
+
+
+    function closeModal() {
+        const modal = document.querySelector('.modal-container');
+        modal.classList.remove('active');
+        document.querySelector('.overlay').classList.remove('active');
+    }
+    
     </script>
 </body>
 

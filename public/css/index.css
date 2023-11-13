@@ -188,6 +188,7 @@ hr {
     border-radius: 15px;
     width: 30%; /* Em vez de um valor fixo, use uma porcentagem */
     overflow: auto;
+    position: relative;
 }
 
 .overlay {
@@ -233,9 +234,10 @@ hr {
 }
 
 .btns button {
-    font-size: medium;
     padding: 10px;
+    font-size: 15px;
     border: none;
+    border: 2px solid black;
     border-radius: 95px;
     color: white;
     cursor: pointer;
@@ -245,8 +247,16 @@ hr {
     background-color: #1b8088!important;
 }
 
-.btnClose {
-    background-color: brown!important;
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background-color: black;
+}
+
+.close-btn:hover {
+    background-color: #1b8088; /* Mude a cor ao passar o mouse para indicar interatividade */
 }
 
 @media (max-width: 500px) {
