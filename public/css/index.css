@@ -80,7 +80,7 @@ body {
 .content {
     margin-left: 250px; /* Adjust according to your sidebar width */
     padding: 60px;
-    margin-top: 200px; /* Increase the margin-top to move the table further down */
+    margin-top: 150px;/
 }
 
 h3 {
@@ -183,9 +183,9 @@ hr {
 .modal {
     display: flex;
     flex-direction: column;
-    padding: 5%; /* Em vez de um valor fixo, use uma porcentagem */
+    padding: 3%; /* Em vez de um valor fixo, use uma porcentagem */
     background-color: white;
-    border-radius: 10px;
+    border-radius: 15px;
     width: 30%; /* Em vez de um valor fixo, use uma porcentagem */
     overflow: auto;
 }
@@ -196,7 +196,7 @@ hr {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.393); /* Cor preta com 50% de opacidade */
+    background-color: rgba(0, 0, 0, 0.47); /* Cor preta com 50% de opacidade */
     z-index: 998; /* Um nível abaixo do modal */
     display: none; /* Inicialmente oculto */
 }
@@ -225,27 +225,24 @@ hr {
     }
 }
 
-span {
-    margin: 10px auto;
-}
 
 .btns {
     display: flex;
-    justify-content: space-between;
-    margin-top: 400px;
+    justify-content: center; /* Alterado para centralizar horizontalmente */
+    margin-top: 40px;
 }
 
 .btns button {
     font-size: medium;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 95px;
     color: white;
     cursor: pointer;
 }
 
 .btnOK {
-    background-color: blue!important;
+    background-color: #1b8088!important;
 }
 
 .btnClose {
@@ -261,4 +258,29 @@ span {
     span, .btns button {
         font-size: smaller;
     }
+}
+
+.modal-container h2 {
+    text-align: center;
+}
+
+/* Adicionando estilos para o formulário dentro do modal */
+
+.form-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.form-container label {
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    text-align: center;
 }

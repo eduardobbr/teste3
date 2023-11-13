@@ -37,11 +37,11 @@
                     <th>MOTIVO</th>
                 </tr>
                 <tr>
-                    <td>administador</td>
-                    <td>administador</td>
-                    <td>administador</td>
-                    <td>administador</td>
-                    <td>administador</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -62,11 +62,11 @@
                     <th>MOTIVO</th>
                 </tr>
                 <tr>
-                    <td>administador</td>
-                    <td>administador</td>
-                    <td>administador</td>
-                    <td>administador</td>
-                    <td>administador</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -78,15 +78,22 @@
     <!-- Modal Container -->
     <div class="modal-container">
         <div class="modal">
-            <h2>Info</h2>
-            <hr>
-            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ipsam quia commodi natus repellat quis
-                quaerat est! Aliquam repudiandae aspernatur ipsum quae. Et, optio veniam! Nobis at aut mollitia
-                non.</span>
-            <hr>
+            <h2>Conseiller - Túnel do Tempo</h2>
+            <div class="form-container">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome">
+    
+                <label for="data">Data:</label>
+                <input type="date" id="data" placeholder="Selecione a data">
+    
+                <label for="dias">Dias desejados:</label>
+                <input type="number" id="dias" placeholder="Digite a quantidade de dias">
+    
+                <label for="motivo">Motivo:</label>
+                <textarea id="motivo" placeholder="Digite o motivo"></textarea>
+            </div>
             <div class="btns">
-                <button class="btnClose" onclick="closeModal()">Close</button>
-                <button class="btnOK" onclick="closeModal()">Ok</button>
+                <button class="btnOK" onclick="closeModal()">ALTERAR</button>
             </div>
         </div>
     </div>
