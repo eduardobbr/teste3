@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('situacao', function (Blueprint $table) {
-            $table->string('Situacao');
-            $table->dateTime('created_at');
-            $table->string('Administrador');
+        Schema::create('tunel_do_tempo', function (Blueprint $table) {
+            $table->id();
+            $table->string('situacao');
+            $table->date('data');
+            $table->string('administrador');
             $table->integer('qntd_dias');
-            $table->string('motivo');
+            $table->text('motivo');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tunel_do_tempo');
     }
 };

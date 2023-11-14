@@ -36,13 +36,15 @@
                     <th>QNTD_DIAS</th>
                     <th>MOTIVO</th>
                 </tr>
+                @foreach($entries as $entry)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $entry->situacao }}</td>
+                    <td>{{ $entry->data }}</td>
+                    <td>{{ $entry->administrador }}</td>
+                    <td>{{ $entry->qntd_dias }}</td>
+                    <td>{{ $entry->motivo }}</td>
                 </tr>
+                @endforeach
             </table>
         </div>
     </div>
@@ -80,6 +82,8 @@
         <div class="modal">
             <h2>Conseiller - Túnel do Tempo</h2>
             <div class="form-container">
+                <form action="{{ url('/tunel-do-tempo') }}" method="POST">
+                    @csrf
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" readonly>
 

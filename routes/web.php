@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TunelDoTempoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,10 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/tuneldotempo', function () {
-    return view('tuneldotempo');
-})->name('tuneldotempo');
+// Route::get('/tuneldotempo', function () {
+//     return view('tuneldotempo');
+// })->name('tuneldotempo');
+
+// Rotas para o controlador TunelDoTempoController
+Route::get('/tuneldotempo', [TunelDoTempoController::class, 'index']);
+Route::post('/tunel-do-tempo', [TunelDoTempoController::class, 'store']);
