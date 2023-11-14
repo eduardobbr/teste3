@@ -92,7 +92,7 @@
                 <textarea id="motivo" placeholder="Informe o motivo"></textarea>
             </div>
             <div class="btns">
-                <button class="close-btn" onclick="closeModal()">&times;</button> <!-- Botão "x" para fechar -->
+                <button class="close-btn" onclick="closeModal()">&times;</button>
                 <button class="btnOK" type="submit">Alterar</button>
             </div>
         </div>
@@ -115,39 +115,47 @@
             }
         });
 
-     
+
         function openModal() {
-        const modal = document.querySelector('.modal-container');
-        modal.classList.add('active');
-        document.querySelector('.overlay').classList.add('active');
+            const modal = document.querySelector('.modal-container');
+            modal.classList.add('active');
+            document.querySelector('.overlay').classList.add('active');
 
-        // Obtenha o elemento de entrada de data no modal
-        var dataInputModal = document.getElementById('dataModal');
+            // Obtenha o elemento de entrada de nome no modal
+            var nomeInputModal = document.getElementById('nome');
 
-        // Obtenha a data atual
-        var dataAtual = new Date();
+            // Defina o valor do campo de entrada de nome como "Gilson"
+            nomeInputModal.value = "Gilson";
 
-        // Formate a data no formato "DD/MM/AAAA"
-        var formattedDate =
-            ("0" + dataAtual.getDate()).slice(-2) + "/" +
-            ("0" + (dataAtual.getMonth() + 1)).slice(-2) + "/" +
-            dataAtual.getFullYear();
+            // Tornar o campo de entrada de nome somente leitura
+            nomeInputModal.setAttribute('readonly', 'true');
 
-        // Defina a data atual no campo de entrada de data no modal
-        dataInputModal.value = formattedDate;
+            // Obtenha o elemento de entrada de data no modal
+            var dataInputModal = document.getElementById('dataModal');
 
-        // Defina o campo de entrada de data como somente leitura
-        dataInputModal.setAttribute('readonly', 'true');
-    }
+            // Obtenha a data atual
+            var dataAtual = new Date();
+
+            // Formate a data no formato "DD/MM/AAAA"
+            var formattedDate =
+                ("0" + dataAtual.getDate()).slice(-2) + "/" +
+                ("0" + (dataAtual.getMonth() + 1)).slice(-2) + "/" +
+                dataAtual.getFullYear();
+
+            // Defina a data atual no campo de entrada de data no modal
+            dataInputModal.value = formattedDate;
+
+            // Defina o campo de entrada de data como somente leitura
+            dataInputModal.setAttribute('readonly', 'true');
+        }
 
 
 
-    function closeModal() {
-        const modal = document.querySelector('.modal-container');
-        modal.classList.remove('active');
-        document.querySelector('.overlay').classList.remove('active');
-    }
-    
+        function closeModal() {
+            const modal = document.querySelector('.modal-container');
+            modal.classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+        }
     </script>
 </body>
 
