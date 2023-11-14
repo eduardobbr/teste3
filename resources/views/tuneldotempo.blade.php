@@ -81,7 +81,7 @@
             <h2>Conseiller - Túnel do Tempo</h2>
             <div class="form-container">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" placeholder="Informe seu nome">
+                <input type="text" id="nome" readonly>
 
                 <input type="text" id="dataModal" readonly>
 
