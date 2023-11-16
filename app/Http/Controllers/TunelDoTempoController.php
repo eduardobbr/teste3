@@ -16,13 +16,29 @@ class TunelDoTempoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validate = $request->validate([
             'nome' => 'required',
             'data' => 'required|date',
             'qntd_dias' => 'required|integer',
-            'motivo' => 'required',
+            'motivo' => 'required'
         ]);
-
-        return redirect('tuneldotempo')->with('success', 'Registro adicionado com sucesso!');
+    
+        try {
+            $tunelDoTempo = new TunelDoTempo();
+    
+            $tunelDoTempo->nome = $request->input('nome');
+            $tunelDoTempo->data = $request->input('data');
+            $tunelDoTempo->qntd_dias = $request->input('qntd_dias');
+            $tunelDoTempo->motivo = $request->input('motivo');
+            $tunelDoTempo->situacao = $request->input('situacao');
+    
+            $tunelDoTempo->save();
+    
+            // Você pode retornar diretamente a instância criada, se desejar
+            return $tunelDoTempo;
+        } catch (\Exception $e) {
+            // Aqui você pode lidar com a exceção, se necessário
+            return redirect('tuneldotempo')->with('error', 'Erro ao adicionar o registro: ' . $e->getMessage());
+        }
     }
 }

@@ -133,10 +133,9 @@ h4 {
     overflow-x: auto;
 }
 
-
 .imagem {
-    width: 90%;
-    height: 90vh; /* Adjust the height as needed */
+    max-width: calc(100% - 250px); /* 100% width minus the width of the sidebar */
+    max-height: calc(100vh - 62px); /* 100% viewport height minus the height of the navbar */
     position: absolute;
     top: 80px;
     left: 250px;
@@ -153,7 +152,7 @@ h4 {
 .btnOpenModal {
     font-size: large;
     padding: 10px;
-    border: none;
+    border: 1px solid black;
     border-radius: 5px;
     background-color: #1b8088;
     color: white;

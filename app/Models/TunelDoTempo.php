@@ -10,4 +10,13 @@ class TunelDoTempo extends Model
     use HasFactory;
 
     protected $table = 'tunel_do_tempo';
+
+    protected $fillable = [
+        "nome",
+        "data",
+        "qntd_dias",
+        "motivo",
+        "situacao"
+    ];
+
 }

@@ -36,15 +36,18 @@
                     <th>QNTD_DIAS</th>
                     <th>MOTIVO</th>
                 </tr>
-                @foreach ($entries as $entry)
+                @if (count($entries) > 0)
+                    @php
+                        $lastEntry = $entries[count($entries) - 1];
+                    @endphp
                     <tr>
-                        <td>{{ $entry->situacao }}</td>
-                        <td>{{ $entry->data }}</td>
-                        <td>{{ $entry->administrador }}</td>
-                        <td>{{ $entry->qntd_dias }}</td>
-                        <td>{{ $entry->motivo }}</td>
+                        <td>{{ $lastEntry->situacao }}</td>
+                        <td>{{ $lastEntry->data }}</td>
+                        <td>{{ $lastEntry->nome }}</td>
+                        <td>{{ $lastEntry->qntd_dias }}</td>
+                        <td>{{ $lastEntry->motivo }}</td>
                     </tr>
-                @endforeach
+                @endif
             </table>
         </div>
     </div>
@@ -63,13 +66,18 @@
                     <th>QNTD_DIAS</th>
                     <th>MOTIVO</th>
                 </tr>
+                @for ($i = count($entries) - 2; $i >= 0; $i--)
+                @php
+                    $entry = $entries[$i];
+                @endphp
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $entry->situacao }}</td>
+                    <td>{{ $entry->data }}</td>
+                    <td>{{ $entry->nome }}</td>
+                    <td>{{ $entry->qntd_dias }}</td>
+                    <td>{{ $entry->motivo }}</td>
                 </tr>
+            @endfor
             </table>
         </div>
     </div>
@@ -82,11 +90,12 @@
         <div class="modal">
             <h2>Conseiller - Túnel do Tempo</h2>
             <div class="form-container">
-                <form name="tuneldotempo" method="POST" action="{{ url('tuneldotempo.store') }}">
+                <form name="tuneldotempo" method="POST" action="{{ Route('tuneldotempo.store') }}">
                     @csrf
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" readonly>
 
+                    <label for="date">Data:</label>
                     <input type="text" id="dataModal" name="data" readonly>
 
                     <label for="dias">Dias desejados:</label>
@@ -102,10 +111,10 @@
             </div>
 
         </div>
+        >
     </div>
 
     <div class="overlay"></div>
-
 
     <script>
         // Adicione um evento de clique ao link "Administrador"
@@ -142,14 +151,8 @@
             // Obtenha a data atual
             var dataAtual = new Date();
 
-            // Formate a data no formato "DD/MM/AAAA"
-            var formattedDate =
-                ("0" + dataAtual.getDate()).slice(-2) + "/" +
-                ("0" + (dataAtual.getMonth() + 1)).slice(-2) + "/" +
-                dataAtual.getFullYear();
-
             // Defina a data atual no campo de entrada de data no modal
-            dataInputModal.value = formattedDate;
+            dataInputModal.value = dataAtual.toISOString().slice(0, 10);
 
             // Defina o campo de entrada de data como somente leitura
             dataInputModal.setAttribute('readonly', 'true');
