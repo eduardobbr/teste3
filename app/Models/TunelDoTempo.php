@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TunelDoTempo extends Model
 {
     use HasFactory;
+
+    protected $table = 'tunel_do_tempo';
 }

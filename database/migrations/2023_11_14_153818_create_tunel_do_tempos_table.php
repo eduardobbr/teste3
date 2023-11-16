@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('situacao');
             $table->date('data');
-            $table->string('administrador');
+            $table->string('nome');
             $table->integer('qntd_dias');
             $table->text('motivo');
             $table->timestamps();

@@ -24,5 +24,5 @@ Route::get('/', function () {
 // })->name('tuneldotempo');
 
 // Rotas para o controlador TunelDoTempoController
-Route::get('/tuneldotempo', [TunelDoTempoController::class, 'index']);
-Route::post('/tunel-do-tempo', [TunelDoTempoController::class, 'store']);
+Route::get('/tuneldotempo', [TunelDoTempoController::class, 'index'])->name('tuneldotempo');
+Route::post('/tuneldotempo.store', [TunelDoTempoController::class, 'store'])->name('tuneldotempo.store');

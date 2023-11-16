@@ -36,14 +36,14 @@
                     <th>QNTD_DIAS</th>
                     <th>MOTIVO</th>
                 </tr>
-                @foreach($entries as $entry)
-                <tr>
-                    <td>{{ $entry->situacao }}</td>
-                    <td>{{ $entry->data }}</td>
-                    <td>{{ $entry->administrador }}</td>
-                    <td>{{ $entry->qntd_dias }}</td>
-                    <td>{{ $entry->motivo }}</td>
-                </tr>
+                @foreach ($entries as $entry)
+                    <tr>
+                        <td>{{ $entry->situacao }}</td>
+                        <td>{{ $entry->data }}</td>
+                        <td>{{ $entry->administrador }}</td>
+                        <td>{{ $entry->qntd_dias }}</td>
+                        <td>{{ $entry->motivo }}</td>
+                    </tr>
                 @endforeach
             </table>
         </div>
@@ -82,23 +82,25 @@
         <div class="modal">
             <h2>Conseiller - Túnel do Tempo</h2>
             <div class="form-container">
-                <form action="{{ url('/tunel-do-tempo') }}" method="POST">
+                <form name="tuneldotempo" method="POST" action="{{ url('tuneldotempo.store') }}">
                     @csrf
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" readonly>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" readonly>
 
-                <input type="text" id="dataModal" readonly>
+                    <input type="text" id="dataModal" name="data" readonly>
 
-                <label for="dias">Dias desejados:</label>
-                <input type="number" id="dias" placeholder="Informe a quantidade de dias">
+                    <label for="dias">Dias desejados:</label>
+                    <input type="number" id="dias" name="qntd_dias" placeholder="Informe a quantidade de dias">
 
-                <label for="motivo">Motivo:</label>
-                <textarea id="motivo" placeholder="Informe o motivo"></textarea>
+                    <label for="motivo">Motivo:</label>
+                    <textarea id="motivo" name="motivo" placeholder="Informe o motivo"></textarea>
+                    <div class="btns">
+                        <button class="close-btn" onclick="closeModal()">&times;</button>
+                        <button class="btnOK" type="submit">Alterar</button>
+                    </div>
+                </form>
             </div>
-            <div class="btns">
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-                <button class="btnOK" type="submit">Alterar</button>
-            </div>
+
         </div>
     </div>
 

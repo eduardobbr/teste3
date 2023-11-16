@@ -10,22 +10,19 @@ class TunelDoTempoController extends Controller
 {
     public function index()
     {
-        $tunelDoTempoEntries = TunelDoTempo::all();
-        return view('tunel_do_tempo', ['entries' => $tunelDoTempoEntries]);
+        $entries = TunelDoTempo::all(); // Recupera todos os registros do banco de dados
+        return view('tuneldotempo', compact('entries'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'situacao' => 'required',
+            'nome' => 'required',
             'data' => 'required|date',
-            'administrador' => 'required',
             'qntd_dias' => 'required|integer',
             'motivo' => 'required',
         ]);
 
-        TunelDoTempo::create($request->all());
-
-        return redirect()->route('dashboard')->with('success', 'Registro adicionado com sucesso!');
+        return redirect('tuneldotempo')->with('success', 'Registro adicionado com sucesso!');
     }
 }
