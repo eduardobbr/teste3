@@ -164,39 +164,80 @@
         }
 
 
-    // Adiciona um evento de carga à página
-    window.addEventListener('load', function () {
-        // Verifica se há uma mensagem de sucesso
-        var successMessage = "{{ session('success') }}";
+        // Adiciona um evento de carga à página
+        window.addEventListener('load', function() {
+            // Verifica se há uma mensagem de sucesso
+            var successMessage = "{{ session('success') }}";
 
-        // Exibe um alerta se houver uma mensagem de sucesso
-        if (successMessage) {
-            showNotification('success', successMessage);
+            // Exibe um alerta se houver uma mensagem de sucesso
+            if (successMessage) {
+                showNotification('success', successMessage);
+            }
+        });
+
+        // Função para exibir notificações simples
+        function showNotification(type, message) {
+            var notificationDiv = document.createElement('div');
+            notificationDiv.classList.add('notification', type);
+
+            var messageDiv = document.createElement('div');
+            messageDiv.innerHTML = message;
+
+            notificationDiv.appendChild(messageDiv);
+
+            // Adiciona a notificação ao corpo do documento
+            document.body.appendChild(notificationDiv);
+
+            // Exibe a notificação
+            notificationDiv.style.display = 'block';
+
+            // Remove a notificação após alguns segundos
+            setTimeout(function() {
+                document.body.removeChild(notificationDiv);
+            }, 5000); // Ajuste conforme necessário
         }
-    });
 
-    // Função para exibir notificações simples
-    function showNotification(type, message) {
-        var notificationDiv = document.createElement('div');
-        notificationDiv.classList.add('notification', type);
 
-        var messageDiv = document.createElement('div');
-        messageDiv.innerHTML = message;
+        // Função para adicionar classe à célula com base no valor de QNTD_DIAS
+        function colorizeCells(tableSelector) {
+            var table = document.querySelector(tableSelector); // Seleciona a tabela
 
-        notificationDiv.appendChild(messageDiv);
+            // Seleciona todas as linhas, exceto a primeira (cabeçalho)
+            var rows = table.querySelectorAll('tr:not(:first-child)');
 
-        // Adiciona a notificação ao corpo do documento
-        document.body.appendChild(notificationDiv);
+            rows.forEach(function(row) {
+                // Obtém o valor da célula QNTD_DIAS da linha
+                var qntdDias = parseInt(row.querySelector('td:nth-child(3)').textContent);
 
-        // Exibe a notificação
-        notificationDiv.style.display = 'block';
+                // Adiciona a classe com base no valor de QNTD_DIAS
+                if (qntdDias <= 7) {
+                    row.querySelectorAll('td').forEach(function(cell) {
+                        cell.classList.add('green-cell');
+                    });
+                } else {
+                    row.querySelectorAll('td').forEach(function(cell) {
+                        cell.classList.add('red-cell');
+                    });
+                }
+            });
+        }
 
-        // Remove a notificação após alguns segundos
-        setTimeout(function () {
-            document.body.removeChild(notificationDiv);
-        }, 5000); // Ajuste conforme necessário
+        // Adiciona a função colorizeCells ao evento de carga da página para ambas as tabelas
+        window.addEventListener('load', function() {
+            colorizeCells('.table-container table');
+            colorizeCells('.table-container2 table');
+        });
+    </script>
+
+    <style>
+        /* Est
     }
-    
+
+    // Adiciona a função colorizeCells ao evento de carga da página para ambas as tabelas
+    window.addEventListener('load', function () {
+        colorizeCells('table');
+        colorizeCells('table2');
+    });
     </script>
 </body>
 

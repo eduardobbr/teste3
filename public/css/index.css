@@ -132,7 +132,7 @@ h4 {
     margin-top: 10px;
     overflow-x: auto;
     overflow-y: auto;
-    max-height: 177px; /* Ajuste conforme necessário */
+    max-height: 176px; /* Ajuste conforme necessário */
 
 }
 
@@ -321,3 +321,13 @@ hr {
     background-color: #f44336;
 }
 
+
+.green-cell {
+    background-color: rgba(0, 134, 0, 0.553);
+    color: white;
+}
+
+.red-cell {
+    background-color: rgba(203, 0, 0, 0.645);
+    color: white;
+}
