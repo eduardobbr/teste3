@@ -90,10 +90,10 @@
                 <form name="tuneldotempo" method="POST" action="{{ Route('tuneldotempo.store') }}">
                     @csrf
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" readonly>
+                    <input type="text" id="nome" name="nome" style="cursor: default" readonly>
 
                     <label for="date">Data:</label>
-                    <input type="text" id="dataModal" name="data" readonly>
+                    <input type="text" id="dataModal" name="data" style="cursor: default" readonly>
 
                     <label for="dias">Dias desejados:</label>
                     <input type="number" id="dias" name="qntd_dias" placeholder="Informe a quantidade de dias">
@@ -133,6 +133,9 @@
             modal.classList.add('active');
             document.querySelector('.overlay').classList.add('active');
 
+            // Oculta o botão "Alterar Túnel"
+            document.querySelector('.btnOpenModal').style.display = 'none';
+
             // Obtenha o elemento de entrada de nome no modal
             var nomeInputModal = document.getElementById('nome');
 
@@ -161,8 +164,10 @@
             const modal = document.querySelector('.modal-container');
             modal.classList.remove('active');
             document.querySelector('.overlay').classList.remove('active');
-        }
 
+            // Exibe o botão "Alterar Túnel" ao fechar o pop-up
+            document.querySelector('.btnOpenModal').style.display = 'block';
+        }
 
         // Adiciona um evento de carga à página
         window.addEventListener('load', function() {
