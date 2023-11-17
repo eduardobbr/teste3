@@ -235,15 +235,6 @@
     </script>
 
     <style>
-        /* Est
-    }
-
-    // Adiciona a função colorizeCells ao evento de carga da página para ambas as tabelas
-    window.addEventListener('load', function () {
-        colorizeCells('table');
-        colorizeCells('table2');
-    });
-    </script>
 </body>
 
 </html>

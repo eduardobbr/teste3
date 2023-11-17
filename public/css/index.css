@@ -103,6 +103,7 @@ th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
+    
 }
 
 th {
@@ -323,11 +324,11 @@ hr {
 
 
 .green-cell {
-    background-color: rgba(0, 134, 0, 0.553);
+    background-color: rgb(0, 172, 0);
     color: white;
 }
 
 .red-cell {
-    background-color: rgba(203, 0, 0, 0.645);
+    background-color: rgb(255, 45, 45);
     color: white;
 }
