@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css\index.css">
+
     <title>Conseiller | Weega - IT&K</title>
 </head>
 
@@ -30,7 +31,6 @@
         <div class="table-container">
             <table>
                 <tr>
-                    <th>SITUAÇÃO</th>
                     <th>DATA</th>
                     <th>ADMINISTRADOR</th>
                     <th>QNTD_DIAS</th>
@@ -41,7 +41,6 @@
                         $lastEntry = $entries[count($entries) - 1];
                     @endphp
                     <tr>
-                        <td>{{ $lastEntry->situacao }}</td>
                         <td>{{ $lastEntry->data }}</td>
                         <td>{{ $lastEntry->nome }}</td>
                         <td>{{ $lastEntry->qntd_dias }}</td>
@@ -57,33 +56,31 @@
 
     <div class="content2">
         <h4>HISTÓRICO</h4>
-        <div class="table-container2">
+        <div class="table-container2"> <!-- Adicione a classe aqui -->
             <table>
                 <tr>
-                    <th>SITUAÇÃO</th>
                     <th>DATA</th>
                     <th>ADMINISTRADOR</th>
                     <th>QNTD_DIAS</th>
                     <th>MOTIVO</th>
                 </tr>
                 @for ($i = count($entries) - 2; $i >= 0; $i--)
-                @php
-                    $entry = $entries[$i];
-                @endphp
-                <tr>
-                    <td>{{ $entry->situacao }}</td>
-                    <td>{{ $entry->data }}</td>
-                    <td>{{ $entry->nome }}</td>
-                    <td>{{ $entry->qntd_dias }}</td>
-                    <td>{{ $entry->motivo }}</td>
-                </tr>
-            @endfor
+                    @php
+                        $entry = $entries[$i];
+                    @endphp
+                    <tr>
+                        <td>{{ $entry->data }}</td>
+                        <td>{{ $entry->nome }}</td>
+                        <td>{{ $entry->qntd_dias }}</td>
+                        <td>{{ $entry->motivo }}</td>
+                    </tr>
+                @endfor
             </table>
         </div>
     </div>
 
     <!-- Botão do pop-up -->
-    <button class="btnOpenModal" onclick="openModal()">Abrir Túnel</button>
+    <button class="btnOpenModal" onclick="openModal()">Alterar Túnel</button>
 
     <!-- Modal Container -->
     <div class="modal-container">
@@ -165,6 +162,41 @@
             modal.classList.remove('active');
             document.querySelector('.overlay').classList.remove('active');
         }
+
+
+    // Adiciona um evento de carga à página
+    window.addEventListener('load', function () {
+        // Verifica se há uma mensagem de sucesso
+        var successMessage = "{{ session('success') }}";
+
+        // Exibe um alerta se houver uma mensagem de sucesso
+        if (successMessage) {
+            showNotification('success', successMessage);
+        }
+    });
+
+    // Função para exibir notificações simples
+    function showNotification(type, message) {
+        var notificationDiv = document.createElement('div');
+        notificationDiv.classList.add('notification', type);
+
+        var messageDiv = document.createElement('div');
+        messageDiv.innerHTML = message;
+
+        notificationDiv.appendChild(messageDiv);
+
+        // Adiciona a notificação ao corpo do documento
+        document.body.appendChild(notificationDiv);
+
+        // Exibe a notificação
+        notificationDiv.style.display = 'block';
+
+        // Remove a notificação após alguns segundos
+        setTimeout(function () {
+            document.body.removeChild(notificationDiv);
+        }, 5000); // Ajuste conforme necessário
+    }
+    
     </script>
 </body>
 

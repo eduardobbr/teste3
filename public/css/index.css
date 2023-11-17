@@ -131,6 +131,9 @@ h4 {
 .table-container2 {
     margin-top: 10px;
     overflow-x: auto;
+    overflow-y: auto;
+    max-height: 177px; /* Ajuste conforme necessário */
+
 }
 
 .imagem {
@@ -293,3 +296,28 @@ hr {
     box-sizing: border-box;
     text-align: center;
 }
+
+
+/* Adicione este estilo ao seu arquivo index.css */
+.notification {
+    position: fixed;
+    bottom: 20px; /* Alterado para a parte inferior */
+    right: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000; /* Ajuste conforme necessário */
+    display: none; /* Inicia oculto */
+}
+
+/* Estilo para notificações de sucesso */
+.notification.success {
+    background-color: #4caf50;
+}
+
+/* Estilo para notificações de erro */
+.notification.error {
+    background-color: #f44336;
+}
+

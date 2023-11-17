@@ -30,14 +30,13 @@ class TunelDoTempoController extends Controller
             $tunelDoTempo->data = $request->input('data');
             $tunelDoTempo->qntd_dias = $request->input('qntd_dias');
             $tunelDoTempo->motivo = $request->input('motivo');
-            $tunelDoTempo->situacao = $request->input('situacao');
     
             $tunelDoTempo->save();
     
             // Você pode retornar diretamente a instância criada, se desejar
-            return $tunelDoTempo;
+            return redirect('tuneldotempo')->with('success', 'Registro adicionado com sucesso!');
         } catch (\Exception $e) {
-            // Aqui você pode lidar com a exceção, se necessário
+            // Redirecionar com mensagem de erro
             return redirect('tuneldotempo')->with('error', 'Erro ao adicionar o registro: ' . $e->getMessage());
         }
     }

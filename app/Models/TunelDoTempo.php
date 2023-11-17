@@ -16,7 +16,6 @@ class TunelDoTempo extends Model
         "data",
         "qntd_dias",
         "motivo",
-        "situacao"
     ];
 
 }
