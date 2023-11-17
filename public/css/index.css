@@ -153,7 +153,7 @@ h4 {
 
 /* Novas regras para centralizar o botão */
 .btnOpenModal {
-    font-size: large;
+    font-size: medium;
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
@@ -162,7 +162,7 @@ h4 {
     cursor: pointer;
     position: fixed;
     top: 100px;
-    right: 20px;
+    right: 40px;
     z-index: 1000;
 }
 
