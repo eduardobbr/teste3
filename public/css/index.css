@@ -52,7 +52,7 @@ body {
     background-color: #1b8088;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Ajuste para posicionar à direita */
     align-items: center;
     height: 62px;
     position: fixed;
@@ -324,11 +324,11 @@ hr {
 
 
 .green-cell {
-    background-color: rgb(0, 172, 0);
+    background-color: #39b032;
     color: white;
 }
 
 .red-cell {
-    background-color: rgb(255, 45, 45);
+    background-color: rgba(255, 45, 45, 0.744);
     color: white;
 }

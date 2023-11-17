@@ -87,7 +87,8 @@
         <div class="modal">
             <h2>Conseiller - Túnel do Tempo</h2>
             <div class="form-container">
-                <form name="tuneldotempo" method="POST" action="{{ Route('tuneldotempo.store') }}">
+                <form name="tuneldotempo" method="POST" action="{{ Route('tuneldotempo.store') }}"
+                    onsubmit="return validateForm()">
                     @csrf
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" style="cursor: default" readonly>
@@ -202,6 +203,33 @@
             }, 5000); // Ajuste conforme necessário
         }
 
+        // Função para validar o formulário
+        function validateForm() {
+            // Obtenha os valores dos campos
+            var nome = document.getElementById('nome').value;
+            var data = document.getElementById('dataModal').value;
+            var qntd_dias = document.getElementById('dias').value;
+            var motivo = document.getElementById('motivo').value;
+
+            // Verifique se os campos obrigatórios estão preenchidos
+            if (nome === '' || data === '' || qntd_dias === '' || motivo === '') {
+                // Exiba uma mensagem de erro apenas se o formulário estiver sendo enviado
+                if (event.submitter.type === "submit") {
+                    showNotification('error', 'Por favor, preencha todos os campos obrigatórios.');
+                }
+                return false; // Impede o envio do formulário
+            }
+
+            // Verifique se qntd_dias não é maior que 30
+            if (parseInt(qntd_dias) > 30) {
+                showNotification('error', 'A quantidade de dias não pode ser maior que 30.');
+                return false; // Impede o envio do formulário
+            }
+
+            // Continue com o envio do formulário se a validação passar
+            return true;
+        }
+
 
         // Função para adicionar classe à célula com base no valor de QNTD_DIAS
         function colorizeCells(tableSelector) {
@@ -233,8 +261,6 @@
             colorizeCells('.table-container2 table');
         });
     </script>
-
-    <style>
 </body>
 
 </html>
