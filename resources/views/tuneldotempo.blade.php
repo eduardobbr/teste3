@@ -56,7 +56,7 @@
 
     <div class="content2">
         <h4>HISTÓRICO</h4>
-        <div class="table-container2"> 
+        <div class="table-container2">
             <table>
                 <tr>
                     <th>DATA</th>
@@ -100,7 +100,7 @@
                     <input type="number" id="dias" name="qntd_dias" placeholder="Informe a quantidade de dias">
 
                     <label for="motivo">Motivo:</label>
-                    <textarea id="motivo" name="motivo" placeholder="Informe o motivo"></textarea>
+                    <textarea id="motivo" name="motivo" style="background-color: antiquewhite" placeholder="Informe o motivo"></textarea>
                     <div class="btns">
                         <button class="close-btn" type="button" onclick="closeModal()">&times;</button>
                         <button class="btnOK" type="submit">Alterar</button>
@@ -265,8 +265,6 @@
             colorizeCells('.table-container table');
             colorizeCells('.table-container2 table');
         });
-
-        
     </script>
 </body>
 
