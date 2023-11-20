@@ -41,7 +41,7 @@
                         $lastEntry = $entries[count($entries) - 1];
                     @endphp
                     <tr>
-                        <td>{{ $lastEntry->data }}</td>
+                        <td>{{ date('d/m/Y', strtotime($lastEntry->data)) }}</td>
                         <td>{{ $lastEntry->nome }}</td>
                         <td>{{ $lastEntry->qntd_dias }}</td>
                         <td>{{ $lastEntry->motivo }}</td>
@@ -56,7 +56,7 @@
 
     <div class="content2">
         <h4>HISTÓRICO</h4>
-        <div class="table-container2"> <!-- Adicione a classe aqui -->
+        <div class="table-container2"> 
             <table>
                 <tr>
                     <th>DATA</th>
@@ -69,7 +69,7 @@
                         $entry = $entries[$i];
                     @endphp
                     <tr>
-                        <td>{{ $entry->data }}</td>
+                        <td>{{ date('d/m/Y', strtotime($entry->data)) }}</td>
                         <td>{{ $entry->nome }}</td>
                         <td>{{ $entry->qntd_dias }}</td>
                         <td>{{ $entry->motivo }}</td>
@@ -102,7 +102,7 @@
                     <label for="motivo">Motivo:</label>
                     <textarea id="motivo" name="motivo" placeholder="Informe o motivo"></textarea>
                     <div class="btns">
-                        <button class="close-btn" onclick="closeModal()">&times;</button>
+                        <button class="close-btn" type="button" onclick="closeModal()">&times;</button>
                         <button class="btnOK" type="submit">Alterar</button>
                     </div>
                 </form>
@@ -211,18 +211,24 @@
             var qntd_dias = document.getElementById('dias').value;
             var motivo = document.getElementById('motivo').value;
 
-            // Verifique se os campos obrigatórios estão preenchidos
+            // Verifica se os campos obrigatórios estão preenchidos
             if (nome === '' || data === '' || qntd_dias === '' || motivo === '') {
-                // Exiba uma mensagem de erro apenas se o formulário estiver sendo enviado
+                // Exibe uma mensagem de erro apenas se o formulário estiver sendo enviado
                 if (event.submitter.type === "submit") {
                     showNotification('error', 'Por favor, preencha todos os campos obrigatórios.');
                 }
                 return false; // Impede o envio do formulário
             }
 
-            // Verifique se qntd_dias não é maior que 30
-            if (parseInt(qntd_dias) > 30) {
-                showNotification('error', 'A quantidade de dias não pode ser maior que 30.');
+            // Verifica se qntd_dias é um número inteiro positivo
+            if (!(/^\d+$/.test(qntd_dias))) {
+                showNotification('error', 'Numeros negativos ou letras não podem ser inseridos.');
+                return false; // Impede o envio do formulário
+            }
+
+            // Verifica se qntd_dias não é maior que 40
+            if (parseInt(qntd_dias) > 40) {
+                showNotification('error', 'A quantidade de dias não pode ser maior que 40.');
                 return false; // Impede o envio do formulário
             }
 
@@ -255,11 +261,12 @@
             });
         }
 
-        // Adiciona a função colorizeCells ao evento de carga da página para ambas as tabelas
         window.addEventListener('load', function() {
             colorizeCells('.table-container table');
             colorizeCells('.table-container2 table');
         });
+
+        
     </script>
 </body>
 
