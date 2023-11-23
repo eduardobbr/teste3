@@ -85,7 +85,7 @@
     <!-- Modal Container -->
     <div class="modal-container">
         <div class="modal">
-            <h2>Conseiller - Túnel do Tempo</h2>
+            <h2>Túnel do Tempo</h2>
             <div class="form-container">
                 <form name="tuneldotempo" method="POST" action="{{ Route('tuneldotempo.store') }}"
                     onsubmit="return validateForm()">
@@ -94,7 +94,7 @@
                     <input type="text" id="nome" name="nome" style="cursor: default" readonly>
 
                     <label for="date">Data:</label>
-                    <input type="text" id="dataModal" name="data" style="cursor: default" readonly>
+                    <input type="date" id="dataModal" name="data" style="cursor: default" readonly>
 
                     <label for="dias">Dias desejados:</label>
                     <input type="number" id="dias" name="qntd_dias" placeholder="Informe a quantidade de dias">
@@ -107,9 +107,7 @@
                     </div>
                 </form>
             </div>
-
         </div>
-        >
     </div>
 
     <div class="overlay"></div>

@@ -173,27 +173,43 @@ hr {
 }
 
 .modal-container {
-    width: 100vw;
+    width: 80%;
+    max-width: 400px;
     position: fixed;
-    top: 70px;
-    left: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 999;
-    justify-content: center;
     display: none;
-    height: 80%; /* Adicione esta linha */
+    /* Removido height */
 }
 
 .modal {
     display: flex;
     flex-direction: column;
-    padding: 3%; /* Em vez de um valor fixo, use uma porcentagem */
+    padding: 3%;
     background-color: white;
     border-radius: 15px;
-    width: 19%; /* Em vez de um valor fixo, use uma porcentagem */
-    overflow: auto;
+    width: 100%;
     position: relative;
-    height: 65%;
-    margin-top: 90px;
+    /* Alterado de height para max-height */
+    max-height: 80vh; /* ou qualquer valor desejado */
+    overflow: auto; /* Adicionado para permitir rolar o conteúdo se necessário */
+}
+
+/* Restante do seu código... */
+
+@media (max-width: 768px) {
+    .modal-container {
+        width: 90vw;
+        /* Removido height */
+    }
+
+    .modal {
+        width: 90%;
+        /* Alterado de height para max-height */
+        max-height: 90vh; /* ou qualquer valor desejado */
+    }
 }
 
 .overlay {
@@ -202,15 +218,14 @@ hr {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.47); /* Cor preta com 50% de opacidade */
-    z-index: 998; /* Um nível abaixo do modal */
-    display: none; /* Inicialmente oculto */
+    background-color: rgba(0, 0, 0, 0.47);
+    z-index: 998;
+    display: none;
 }
 
 .active .overlay {
-    display: block; /* Torna visível quando o modal está ativo */
+    display: block;
 }
-
 
 .active {
     display: flex;
@@ -218,6 +233,17 @@ hr {
 
 .active .modal {
     animation: modal .4s;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 @keyframes modal {
