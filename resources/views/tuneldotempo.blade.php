@@ -97,7 +97,8 @@
                     <input type="date" id="dataModal" name="data" style="cursor: default" readonly>
 
                     <label for="dias">Dias desejados:</label>
-                    <input type="number" id="dias" name="qntd_dias" placeholder="Informe a quantidade de dias">
+                    <input type="number" id="dias" name="qntd_dias" placeholder="Informe a quantidade de dias"
+                        data-dias-permitidos="">
 
                     <label for="motivo">Motivo:</label>
                     <textarea id="motivo" name="motivo" style="background-color: antiquewhite" placeholder="Informe o motivo"></textarea>
@@ -113,7 +114,7 @@
     <div class="overlay"></div>
 
     <script>
-        // Adicione um evento de clique ao link "Administrador"
+        // Adiciona um evento de clique ao link "Administrador"
         document.getElementById("adminLink").addEventListener("click", function() {
             // Quando o link "Administrador" for clicado, verifique o estado atual do "Tunel do Tempo"
             var timeTunnel = document.getElementById("timeTunnel");
@@ -135,28 +136,40 @@
             // Oculta o botão "Alterar Túnel"
             document.querySelector('.btnOpenModal').style.display = 'none';
 
-            // Obtenha o elemento de entrada de nome no modal
+            // Obtem o elemento de entrada de nome no modal
             var nomeInputModal = document.getElementById('nome');
 
-            // Defina o valor do campo de entrada de nome como "Gilson"
+            // Define o valor do campo de entrada de nome como "Gilson"
             nomeInputModal.value = "Gilson";
 
-            // Tornar o campo de entrada de nome somente leitura
+            // Torna o campo de entrada de nome somente leitura
             nomeInputModal.setAttribute('readonly', 'true');
 
-            // Obtenha o elemento de entrada de data no modal
+            // Obtem o elemento de entrada de data no modal
             var dataInputModal = document.getElementById('dataModal');
 
-            // Obtenha a data atual
+            // Obtem a data atual
             var dataAtual = new Date();
 
-            // Defina a data atual no campo de entrada de data no modal
+            // Calcula e exibe a mensagem de dias permitidos
+            var ultimoDia6 = new Date();
+            ultimoDia6.setDate(6);
+
+            var diasPermitidos = Math.ceil((dataAtual - ultimoDia6) / (1000 * 60 * 60 * 24));
+
+            // Exibe a mensagem informativa no modal
+            alert('Você pode liberar até ' + diasPermitidos + ' dias atrás.');
+
+            // Define a data atual no campo de entrada de data no modal
             dataInputModal.value = dataAtual.toISOString().slice(0, 10);
 
-            // Defina o campo de entrada de data como somente leitura
+            // Define o campo de entrada de data como somente leitura
             dataInputModal.setAttribute('readonly', 'true');
-        }
 
+            // Adiciona um atributo de dados ao campo dias
+            var diasInput = document.getElementById('dias');
+            diasInput.dataset.diasPermitidos = diasPermitidos;
+        }
 
 
         function closeModal() {
@@ -224,15 +237,17 @@
                 return false; // Impede o envio do formulário
             }
 
-            // Verifica se qntd_dias não é maior que 40
-            if (parseInt(qntd_dias) > 40) {
-                showNotification('error', 'A quantidade de dias não pode ser maior que 40.');
+            // Verifica se qntd_dias não é maior que diasPermitidos
+            var diasPermitidos = parseInt(document.getElementById('dias').dataset.diasPermitidos);
+            if (parseInt(qntd_dias) > diasPermitidos) {
+                showNotification('error', 'A quantidade de dias não pode ser maior que ' + diasPermitidos + '.');
                 return false; // Impede o envio do formulário
             }
 
-            // Continue com o envio do formulário se a validação passar
+            // Continua com o envio do formulário se a validação passar
             return true;
         }
+
 
 
         // Função para adicionar classe à célula com base no valor de QNTD_DIAS
