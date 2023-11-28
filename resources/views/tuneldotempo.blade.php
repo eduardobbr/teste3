@@ -192,7 +192,7 @@
             }
         });
 
-        // Função para exibir notificações simples
+        // Função para exibir notificações
         function showNotification(type, message) {
             var notificationDiv = document.createElement('div');
             notificationDiv.classList.add('notification', type);
