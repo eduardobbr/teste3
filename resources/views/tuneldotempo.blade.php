@@ -171,7 +171,6 @@
             diasInput.dataset.diasPermitidos = diasPermitidos;
         }
 
-
         function closeModal() {
             const modal = document.querySelector('.modal-container');
             modal.classList.remove('active');
@@ -276,7 +275,6 @@
 
         window.addEventListener('load', function() {
             colorizeCells('.table-container table');
-            colorizeCells('.table-container2 table');
         });
     </script>
 </body>
