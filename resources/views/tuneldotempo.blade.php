@@ -153,7 +153,7 @@
 
             // Calcula e exibe a mensagem de dias permitidos
             var ultimoDia5 = new Date();
-            ultimoDia5.setDate(5);
+            ultimoDia5.setDate(6);
 
             var diasPermitidos = Math.ceil((dataAtual - ultimoDia5) / (1000 * 60 * 60 * 24));
 
