@@ -152,10 +152,10 @@
             var dataAtual = new Date();
 
             // Calcula e exibe a mensagem de dias permitidos
-            var ultimoDia5 = new Date();
-            ultimoDia5.setDate(6);
+            var ultimoDia6 = new Date();
+            ultimoDia6.setDate(6);
 
-            var diasPermitidos = Math.ceil((dataAtual - ultimoDia5) / (1000 * 60 * 60 * 24));
+            var diasPermitidos = Math.ceil((dataAtual - ultimoDia6) / (1000 * 60 * 60 * 24));
 
             // Exibe a mensagem informativa no modal
             alert('Você pode liberar até ' + diasPermitidos + ' dias atrás.');
