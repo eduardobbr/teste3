@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css\index.css">
 
+    <link rel="icon" href="img/logo.png" type="image/png">
     <title>Conseiller | Weega - IT&K</title>
 </head>
 
@@ -22,7 +23,7 @@
         <a href="#" id="adminLink"
             class="{{ Route::currentRouteName() === 'admin' ? 'active' : '' }}">Administrador</a>
         <a href="{{ route('tuneldotempo') }}" id="timeTunnel"
-            class="{{ Route::currentRouteName() === 'tuneldotempo' ? 'active' : '' }}">Tunel do Tempo</a>
+            class="{{ Route::currentRouteName() === 'tuneldotempo' ? 'active' : '' }}">Túnel do Tempo</a>
         <hr style="width: 15rem" color="black">
     </div>
 
@@ -116,13 +117,15 @@
     <script>
         // Adiciona um evento de clique ao link "Administrador"
         document.getElementById("adminLink").addEventListener("click", function() {
-            // Quando o link "Administrador" for clicado, verifique o estado atual do "Tunel do Tempo"
+           
+            // Quando o link "Administrador" for clicado, verifica o estado atual do "Tunel do Tempo"
             var timeTunnel = document.getElementById("timeTunnel");
+           
             if (timeTunnel.style.display === "none" || timeTunnel.style.display === "") {
-                // Se estiver oculto, mostre o "Tunel do Tempo"
+                // SE estiver oculto, mostre o "Tunel do Tempo"
                 timeTunnel.style.display = "block";
             } else {
-                // Se estiver visível, oculte o "Tunel do Tempo"
+                // SE estiver visível, oculte o "Tunel do Tempo"
                 timeTunnel.style.display = "none";
             }
         });
@@ -182,6 +185,7 @@
 
         // Adiciona um evento de carga à página
         window.addEventListener('load', function() {
+
             // Verifica se há uma mensagem de sucesso
             var successMessage = "{{ session('success') }}";
 
@@ -210,7 +214,7 @@
             // Remove a notificação após alguns segundos
             setTimeout(function() {
                 document.body.removeChild(notificationDiv);
-            }, 5000); // Ajuste conforme necessário
+            }, 5000); // Ajusta tempo da notificação na tela conforme necessário
         }
 
         // Função para validar o formulário
@@ -222,7 +226,7 @@
             var motivo = document.getElementById('motivo').value;
 
             // Verifica se os campos obrigatórios estão preenchidos
-            if (nome === '' || data === '' || qntd_dias === '' || motivo === '') {
+            if (nome === '' || data === '' || qntd_dias === '' || motivo === '') {    
                 // Exibe uma mensagem de erro apenas se o formulário estiver sendo enviado
                 if (event.submitter.type === "submit") {
                     showNotification('error', 'Por favor, preencha todos os campos obrigatórios.');
@@ -233,6 +237,7 @@
             // Verifica se qntd_dias é um número inteiro positivo
             if (!(/^\d+$/.test(qntd_dias))) {
                 showNotification('error', 'Numeros negativos ou letras não podem ser inseridos.');
+            
                 return false; // Impede o envio do formulário
             }
 
@@ -240,6 +245,7 @@
             var diasPermitidos = parseInt(document.getElementById('dias').dataset.diasPermitidos);
             if (parseInt(qntd_dias) > diasPermitidos) {
                 showNotification('error', 'A quantidade de dias não pode ser maior que ' + diasPermitidos + '.');
+            
                 return false; // Impede o envio do formulário
             }
 
@@ -251,12 +257,14 @@
 
         // Função para adicionar classe à célula com base no valor de QNTD_DIAS
         function colorizeCells(tableSelector) {
+            
             var table = document.querySelector(tableSelector); // Seleciona a tabela
 
             // Seleciona todas as linhas, exceto a primeira (cabeçalho)
             var rows = table.querySelectorAll('tr:not(:first-child)');
 
             rows.forEach(function(row) {
+
                 // Obtém o valor da célula QNTD_DIAS da linha
                 var qntdDias = parseInt(row.querySelector('td:nth-child(3)').textContent);
 
