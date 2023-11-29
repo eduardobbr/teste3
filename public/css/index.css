@@ -1,7 +1,7 @@
 body {
     background-color: rgb(255, 255, 255);
     margin: 0;
-    background-color: rgba(242, 242, 242, 0.741)
+    background-color: rgba(242, 242, 242, 0.741);
 }
 
 .sidebar {
@@ -20,7 +20,7 @@ body {
     text-align: center;
     color: white;
     font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .sidebar a {
@@ -106,10 +106,10 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: center;    
+    text-align: center;
 }
 
 th {
@@ -126,13 +126,12 @@ tr:nth-child(even) {
     padding-left: 60px;
     padding-bottom: 60px;
     padding-right: 60px;
-    padding-top: 20px;   
+    padding-top: 20px;
     margin-top: 80px;
     margin-bottom: 80px; /* Adicione esta linha para a margem inferior */
     background-color: white;
     border: 1px solid #ddd;
 }
-
 
 h4 {
     color: #1b8088; /* Match the navbar background color */
@@ -145,12 +144,15 @@ h4 {
     overflow-x: auto;
     overflow-y: auto;
     max-height: 176px; /* Ajuste conforme necessário */
-
 }
 
 .imagem {
-    max-width: calc(100% - 250px); /* 100% width minus the width of the sidebar */
-    max-height: calc(100vh - 62px); /* 100% viewport height minus the height of the navbar */
+    max-width: calc(
+        100% - 250px
+    ); /* 100% width minus the width of the sidebar */
+    max-height: calc(
+        100vh - 62px
+    ); /* 100% viewport height minus the height of the navbar */
     position: absolute;
     top: 80px;
     left: 250px;
@@ -243,7 +245,7 @@ hr {
 }
 
 .active .modal {
-    animation: modal .4s;
+    animation: modal 0.4s;
 }
 
 @keyframes modal {
@@ -267,7 +269,6 @@ hr {
         transform: translate3d(0, 0, 0);
     }
 }
-
 
 .btns {
     display: flex;
@@ -307,7 +308,8 @@ hr {
         width: 80%;
     }
 
-    span, .btns button {
+    span,
+    .btns button {
         font-size: smaller;
     }
 }
@@ -333,7 +335,6 @@ hr {
     text-align: center;
 }
 
-
 /* Adicione este estilo ao seu arquivo index.css */
 .notification {
     position: fixed;
@@ -356,7 +357,6 @@ hr {
 .notification.error {
     background-color: #f44336;
 }
-
 
 .green-cell {
     background-color: #acffa8;
