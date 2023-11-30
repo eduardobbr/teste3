@@ -28,6 +28,7 @@
     </div>
 
     <div class="content">
+        <img src="img/calendario.png" alt="Calendário" id="material-icons">
         <h3>SITUAÇÃO</h3>
         <div class="table-container">
             <table>
@@ -56,6 +57,7 @@
 
 
     <div class="content2">
+        <img src="img/calendario.png" alt="Calendário" id="material-icons2">
         <h4>HISTÓRICO</h4>
         <div class="table-container2">
             <table>

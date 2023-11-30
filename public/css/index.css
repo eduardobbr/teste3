@@ -13,6 +13,7 @@ body {
     left: 0;
     display: flex;
     flex-direction: column;
+    z-index: 3;
 }
 
 .sidebar .title {
@@ -53,13 +54,13 @@ body {
     background-color: #1b8088;
     color: white;
     display: flex;
-    justify-content: flex-end; /* Ajuste para posicionar à direita */
     align-items: center;
     height: 62px;
     position: fixed;
     top: 0;
     right: 0;
     left: 200px;
+    z-index: 2;
 }
 
 .navbar ul {
@@ -89,6 +90,24 @@ body {
     border-width: 50%;
     background-color: white;
     border: 1px solid #ddd;
+    position: relative;
+    z-index: 1;
+}
+
+#material-icons {
+    position: absolute;
+    top: -50px;
+    width: 95px;
+    height: auto; 
+    margin-left: -30px;
+}
+
+#material-icons2 {
+    position: absolute;
+    top: -50px;
+    width: 95px;
+    height: auto; 
+    margin-left: -40px;
 }
 
 h3 {
@@ -130,9 +149,11 @@ tr:nth-child(even) {
     padding-right: 60px;
     padding-top: 20px;
     margin-top: 80px;
-    margin-bottom: 80px; /* Adicione esta linha para a margem inferior */
+    margin-bottom: 80px;
     background-color: white;
     border: 1px solid #ddd;
+    position: relative;
+    z-index: 1;
 }
 
 h4 {
